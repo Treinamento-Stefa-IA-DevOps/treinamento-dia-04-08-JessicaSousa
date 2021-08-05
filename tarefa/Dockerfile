@@ -1,8 +1,20 @@
-#FROM python:3.8-slim
-FROM centos/python-36-centos7
+# Obter imagem oficial do python no Docker
+FROM python:3.9.6-slim
 
-COPY . /app
-
+# Definir o work directory
 WORKDIR /app
 
-CMD ["uvicorn", "main:app","--host", "0.0.0.0", "--port", "80", "--reload"]
+# Definir variáveis de ambiente do python
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+# Instalar dependências
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+EXPOSE 80
+
+# Copiar o projeto
+COPY . .
+
+CMD ["uvicorn", "codigo.main:app", "--host", "0.0.0.0", "--port", "80", "--reload"]

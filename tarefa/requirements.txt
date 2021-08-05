@@ -1,4 +1,4 @@
 pandas
 fastapi
 sklearn
-uvicorn[standart]
+uvicorn
