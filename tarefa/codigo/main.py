@@ -26,7 +26,7 @@ def titanic(
     sex: int = Query(..., alias="Sex", title="Sex", ge=0, le=1),
     age: float = Query(..., alias="Age", title="Age in years", ge=0, le=120),
     lifeboat: int = Query(
-        ..., alias="Lifeboat", title="Lifeboat", ge=1, le=20
+        ..., alias="Lifeboat", title="Lifeboat", ge=0, le=20
     ),
     p_class: int = Query(
         ..., alias="Pclass", title="Ticket class", ge=1, le=3
@@ -37,7 +37,7 @@ def titanic(
     - **sex**: sexo da pessoa, sendo o valor 0 para masculino e 1 para feminino
     - **age**: idade informada em modo fracionário, exemplo: 10.6
     - **lifeboat**: número do barco salva vidas utilizado
-    - **p_class**: classe no navio, sendo 1 primeira classe e 3 econômica
+    - **p_class**: classe no navio, sendo: 1 = 1º classe, 2 = 2º classe, 3 = 3º classe
     """
     try:
         with open("codigo/model/Titanic.pkl", "rb") as fid:
