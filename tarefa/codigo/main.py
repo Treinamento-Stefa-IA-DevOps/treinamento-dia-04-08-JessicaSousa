@@ -42,7 +42,7 @@ def titanic(
     try:
         with open("codigo/model/Titanic.pkl", "rb") as fid:
             clf = pickle.load(fid)
-            pred = clf.predict([[sex, age, lifeboat, p_class]])
+            pred = clf.predict([[p_class, age, sex, lifeboat]])
             return {
                 "survived": bool(pred[0]),
                 "status": 200,
